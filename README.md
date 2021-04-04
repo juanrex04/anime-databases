@@ -15,10 +15,9 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
+### What is it this page?
+This page allows you to search animes with one word in a simple way, the API used in this exercise was [Jikan](https://jikan.docs.apiary.io/#)
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
