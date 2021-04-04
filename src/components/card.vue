@@ -1,14 +1,16 @@
 <template>
   <div class="card">
-    <a href="#" target="_BLANK">
-      <img src="https://place-hold.it/150x250" alt="Anime poster" />
-      <h2>Naruto</h2>
+    <a :href="anime.url" target="_BLANK">
+      <img :src="anime.image_url" :alt="anime.title + 'Poster'" />
+      <h2>{{ anime.title }}</h2>
     </a>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["anime"],
+};
 </script>
 
 <style scoped lang="scss">

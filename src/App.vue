@@ -8,16 +8,49 @@
           class="searchField"
           placeholder="Write to search"
           required
-          v-model="search_query"
+          v-model="searchQuery"
         />
       </form>
     </header>
+    <main>
+      <div class="cards" v-if="animelist.length > 0">
+        <Card v-for="anime in animelist" :key="anime.mal_id" :anime="anime" />
+      </div>
+
+      <div class="no-result" v-else>
+        Sorry anime no found...
+      </div>
+    </main>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
+import Card from "./components/card";
+
 export default {
-}
+  components: { Card },
+  setup() {
+    const searchQuery = ref("");
+    const animelist = ref([]);
+
+    const search = async () => {
+      animelist.value = await fetch(
+        `https://api.jikan.moe/v3/search/anime?q=${searchQuery.value}`
+      )
+        .then((res) => res.json())
+        .then((data) => data.results);
+
+      searchQuery.value = "";
+    };
+    return {
+      Card,
+      searchQuery,
+      animelist,
+      search,
+    };
+  },
+};
 </script>
 
 <style lang="scss">
@@ -83,6 +116,19 @@ header {
         box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.15);
       }
     }
+  }
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -8px;
   }
 }
 </style>
