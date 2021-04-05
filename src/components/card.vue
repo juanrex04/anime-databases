@@ -16,15 +16,15 @@ export default {
 <style scoped lang="scss">
 .card {
   flex: 1 1 33%;
-  width: 33%;
+  width: 100%;
   max-width: 33%;
   padding: 0px 8px;
   margin-bottom: 16px;
 
   img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
+    background-size: cover;
+    overflow: hidden;
     border-radius: 16px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
     transition: 0.4s;
@@ -32,8 +32,12 @@ export default {
 
   h2 {
     padding: 16px;
-    color: #313131;
+    color: #ffff;
     transition: 0.4s;
+
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
   }
 
   &:hover {

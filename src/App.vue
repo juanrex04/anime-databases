@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <header>
-      <h1>Anime <strong>DATABASE</strong></h1>
+      <h1>Anime <strong>SEARCH</strong></h1>
       <form class="searchBox" @submit.prevent="search">
         <input
           type="search"
@@ -17,9 +17,7 @@
         <Card v-for="anime in animelist" :key="anime.mal_id" :anime="anime" />
       </div>
 
-      <div class="no-result" v-else>
-        Sorry anime no found...
-      </div>
+      <div class="no-result" v-else>Start write to search some animes...</div>
     </main>
   </div>
 </template>
@@ -62,6 +60,11 @@ export default {
   font-family: "Oswald", sans-serif;
 }
 
+body {
+  background: linear-gradient(to left, #2d4e74, rgb(232, 74, 42)) no-repeat
+    center center fixed;
+}
+
 a {
   text-decoration: none;
 }
@@ -70,18 +73,19 @@ header {
   padding-top: 50px;
   padding-bottom: 50px;
   h1 {
-    color: #888;
+    color: #000;
     font-size: 42px;
     font-weight: 400;
     text-align: center;
     text-transform: uppercase;
     margin-bottom: 30px;
+    transition: .4s;
 
     strong {
       color: #313131;
     }
     &:hover {
-      color: #313131;
+      color: #ffff;
     }
   }
 
@@ -129,6 +133,12 @@ main {
     display: flex;
     flex-wrap: wrap;
     margin: 0 -8px;
+  }
+
+  .no-result{
+    text-align: center;
+    font-size: 40px;
+    color: #ffff;
   }
 }
 </style>
